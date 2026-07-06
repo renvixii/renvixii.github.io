@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-W Urgent Care - Staff Hub</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#F1F5F9] font-sans text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Sticky Branding Bar -->
+    <header class="bg-[#0B2545] text-white shadow-md px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <div class="bg-white p-2 rounded-full shadow-inner flex items-center justify-center w-11 h-11">
+                <i data-lucide="activity" class="text-[#E63946] w-7 h-7"></i>
+            </div>
+            <div>
+                <div class="flex items-center gap-2.5">
+                    <h1 class="text-xl font-bold tracking-tight leading-none">K-W Urgent Care Clinics</h1>
+
+                </div>
+                <span class="text-xs text-slate-300 font-medium tracking-wider uppercase block mt-1 text-center">Portal</span>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <!-- Mobile Left Sidebar Toggle -->
+            <button id="toggle-left" class="bg-[#134074] hover:bg-[#1e5aa8] px-3 py-2 rounded-xl flex items-center gap-2 text-sm font-medium transition-colors">
+                <i data-lucide="sidebar" class="w-5 h-5"></i>
+                <span class="hidden sm:inline">Menu</span>
+            </button>
+
+            <!-- Right Sidebar Toggle -->
+            <button id="toggle-right" class="bg-[#134074] hover:bg-[#1e5aa8] px-3 py-2 rounded-xl flex items-center gap-2 text-sm font-medium transition-colors">
+                <i data-lucide="filter" class="w-5 h-5"></i>
+                <span class="hidden sm:inline">Filter</span>
+            </button>
+        </div>
+	<div class="flex items-center gap-3">
+		<!--span class="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Tailscale Status : Connected
+                    </span-->
+
+		<span class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+    			<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+    			Tailscale Status : Not Connected
+		</span>
+        </div>
+    </header>
+
+    <!-- Main Workspace Three-Column Layout -->
+    <div class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6">
+        
+        <!-- COLUMN 1: Left Sidebar -->
+        <aside id="left-sidebar" class="w-full lg:w-60 flex-shrink-0 space-y-4 lg:block hidden">
+            
+            <!-- Global Directory Navigation Card -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs sticky top-[100px] space-y-4">
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-2 mb-2">Notice Board &amp; Policies</p>
+                    <nav class="space-y-1">
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all">
+                            <i data-lucide="bell" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                            <span class="truncate">Staff Announcements</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all">
+                            <i data-lucide="sticky-note" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                            <span class="truncate">Policy Updates Hub</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all">
+                            <i data-lucide="book-marked" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                            <span class="truncate">Common SOPs Matrix</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <hr class="border-slate-100">
+
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-2 mb-2">Education &amp; Help</p>
+                    <nav class="space-y-1">
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600 shrink-0"></i>
+                            <span class="truncate">Training Manuals</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0"></i>
+                            <span class="truncate">FAQs Portal</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Urgent Bulletins -->
+            <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-300 shadow-xs sticky top-[380px] space-y-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="alert-circle" class="w-4 h-4 text-amber-700 animate-bounce"></i>
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-800">Critical Bulletin</span>
+                    </div>
+                    <span class="text-[10px] bg-amber-200 text-amber-900 font-bold px-1.5 py-0.5 rounded-md">New Today</span>
+                </div>
+                
+                <div class="space-y-1">
+                    <h4 class="text-xs font-extrabold text-slate-950 leading-tight">OSCAR EMR Patch Schedule</h4>
+                    <p class="text-[11px] text-slate-600 leading-normal">
+                        System maintenance tonight at <strong>23:00 EST</strong>. Front Desk must switch to down-time paper logs during the 20-minute window.
+                    </p>
+                </div>
+
+                <a href="#" class="w-full flex items-center justify-between text-[11px] font-bold text-amber-900 bg-amber-200/60 hover:bg-amber-200 p-2 rounded-xl transition-all group">
+                    <span>Read Full Directives</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- COLUMN 2: Center Core Directory Links Grids -->
+        <main class="flex-1 order-3 lg:order-2 space-y-10">
+            
+            <!-- FRONT DESK & RECEPTION -->
+            <section id="sec-frontdesk" class="role-section space-y-4">
+                <div class="flex items-center space-x-2.5 border-b border-slate-200 pb-3">
+                    <div class="p-2 bg-indigo-100 text-indigo-700 rounded-xl"><i data-lucide="layout-dashboard" class="w-5 h-5"></i></div>
+                    <div>
+                        <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">Front Desk &amp; Reception</h2>
+                        <p class="text-xs text-slate-500">Patient intake, processing, incoming correspondence, and registration workflows.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <a href="#" class="group bg-indigo-50/50 p-5 rounded-2xl border-2 border-indigo-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-600 text-white rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="milestone" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-extrabold text-indigo-950">Reception Workflows</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="monitor" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Telus Registration</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="tablet" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Check-In Kiosks</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="scan" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Billing Scan Portal</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="printer" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">SRFax Direct Line</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="banknote" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Petty Cash Ledger</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="globe-2" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Out of Province Billing</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="file-text" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-indigo-900">Intake Sheet Templates</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- CLINICAL PROVIDERS & NURSING -->
+            <section id="sec-clinical" class="role-section space-y-4">
+                <div class="flex items-center space-x-2.5 border-b border-slate-200 pb-3">
+                    <div class="p-2 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="heart-pulse" class="w-5 h-5"></i></div>
+                    <div>
+                        <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">Clinical Providers &amp; Nursing Staff</h2>
+                        <p class="text-xs text-slate-500">Sensitive medical records databases, lab portals, referencing engines, and protocols.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <a href="#" class="group bg-emerald-50/50 p-5 rounded-2xl border-2 border-emerald-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all" id="link-nurse-workflow">
+                        <div class="p-3 bg-emerald-600 text-white rounded-xl mb-2 group-hover:scale-105 transition-transform shadow-xs"><i data-lucide="navigation-2" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-extrabold text-emerald-950">Nursing Workflows</span>
+                    </a>
+                    <a href="#" class="group bg-teal-50/50 p-5 rounded-2xl border-2 border-teal-200 hover:border-teal-500 hover:shadow-md flex flex-col items-center text-center transition-all" id="link-physician-res">
+                        <div class="p-3 bg-teal-600 text-white rounded-xl mb-2 group-hover:scale-105 transition-transform shadow-xs"><i data-lucide="folder-heart" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-extrabold text-teal-950">Physician Resources</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="heart-pulse" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">OSCAR EMR Portal</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="test-tube" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">Lifelabs Diagnostics</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="shield-alert" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">Public Health Reporting</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="bookmark" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">UpToDate Reference</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="pill" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">MedsCheck Gateway</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="ambulance" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-900">ER Diversion Protocol</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- CLINIC OPERATIONS & LOGISTICS -->
+            <section id="sec-operations" class="role-section space-y-4">
+                <div class="flex items-center space-x-2.5 border-b border-slate-200 pb-3">
+                    <div class="p-2 bg-sky-100 text-sky-700 rounded-xl"><i data-lucide="layers" class="w-5 h-5"></i></div>
+                    <div>
+                        <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">Clinic Operations &amp; Logistics</h2>
+                        <p class="text-xs text-slate-500">Rosters, onboarding portals, ticketing queues, and shared media folders.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <a href="#" class="group bg-sky-600 text-white p-5 rounded-2xl border-2 border-sky-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-600 text-white rounded-xl mb-2 group-hover:scale-105 transition-transform shadow-xs"><i data-lucide="calendar-days" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-extrabold">Scheduling Links</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="users-2" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Volunteer &amp; Student Onboarding</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="cloud-lightning" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Google Workspace Drive</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="wrench" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Tech Support Ticket</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="shopping-cart" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Supply Order Form</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="shuffle" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Shift Swap Board</span>
+                    </a>
+                    <a href="#" class="group bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="alert-triangle" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-sky-900">Incident Reporting</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ADMIN & INFRASTRUCTURE -->
+            <section id="sec-admin" class="role-section space-y-4">
+                <div class="flex items-center space-x-2.5 border-b border-slate-200 pb-3">
+                    <div class="p-2 bg-rose-100 text-rose-700 rounded-xl"><i data-lucide="lock" class="w-5 h-5"></i></div>
+                    <div>
+                        <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">Executive Management &amp; Infrastructure</h2>
+                        <p class="text-xs text-slate-500">Corporate banking channels, provincial billing reporting, master password vaults, and financials.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <a href="#" class="group bg-rose-50/40 p-5 rounded-2xl border-2 border-rose-200 hover:border-rose-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-rose-100 text-rose-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="landmark" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-rose-950">CIBC Business Banking</span>
+                    </a>
+                    <a href="#" class="group bg-rose-50/40 p-5 rounded-2xl border-2 border-rose-200 hover:border-rose-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-rose-100 text-rose-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="key-round" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-rose-950">Master Password Vault</span>
+                    </a>
+                    <a href="#" class="group bg-rose-50/40 p-5 rounded-2xl border-2 border-rose-200 hover:border-rose-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-rose-100 text-rose-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="file-spreadsheet" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-rose-950">MOH Billing Portal</span>
+                    </a>
+                    <a href="#" class="group bg-rose-50/40 p-5 rounded-2xl border-2 border-rose-200 hover:border-rose-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-rose-100 text-rose-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="receipt" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-rose-950">Corporate Expenses</span>
+                    </a>
+                    <a href="#" class="group bg-rose-50/40 p-5 rounded-2xl border-2 border-rose-200 hover:border-rose-500 hover:shadow-md flex flex-col items-center text-center transition-all">
+                        <div class="p-3 bg-rose-100 text-rose-600 rounded-xl mb-2 group-hover:scale-105 transition-transform"><i data-lucide="credit-card" class="w-6 h-6"></i></div>
+                        <span class="text-xs font-bold text-rose-950">HR &amp; Payroll System</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- COLUMN 3: Right Sidebar (Workspace Filter) -->
+        <aside id="right-sidebar" class="w-full lg:w-64 flex-shrink-0 order-2 lg:order-3 hidden lg:block">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs sticky top-[100px] space-y-4">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900">Workspace Filter</h3>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Isolate directories tailored strictly to your scheduled job shift today. Click again to unselect.</p>
+                </div>
+
+                <!-- Toggles Box Container -->
+                <div class="space-y-1.5" id="filter-group">
+                    <button onclick="handleRoleClick('admin')" id="nav-admin" class="role-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200/80 hover:bg-slate-100 transition-all cursor-pointer group">
+                        <span class="truncate">President / Admin</span>
+                        <i data-lucide="x" class="w-4 h-4 hidden text-slate-300 group-hover:text-rose-400 shrink-0 ml-1"></i>
+                    </button>
+                    <button onclick="handleRoleClick('frontdesk')" id="nav-frontdesk" class="role-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200/80 hover:bg-slate-100 transition-all cursor-pointer group">
+                        <span class="truncate">Front Desk / Reception</span>
+                        <i data-lucide="x" class="w-4 h-4 hidden text-slate-300 group-hover:text-rose-400 shrink-0 ml-1"></i>
+                    </button>
+                    <button onclick="handleRoleClick('nurse')" id="nav-nurse" class="role-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200/80 hover:bg-slate-100 transition-all cursor-pointer group">
+                        <span class="truncate">Nursing Staff</span>
+                        <i data-lucide="x" class="w-4 h-4 hidden text-slate-300 group-hover:text-rose-400 shrink-0 ml-1"></i>
+                    </button>
+                    <button onclick="handleRoleClick('physician')" id="nav-physician" class="role-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200/80 hover:bg-slate-100 transition-all cursor-pointer group">
+                        <span class="truncate">Physicians</span>
+                        <i data-lucide="x" class="w-4 h-4 hidden text-slate-300 group-hover:text-rose-400 shrink-0 ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center transition-colors" id="help-box">
+                    <p class="text-[11px] text-blue-800 font-medium leading-normal">Showing <strong>all clinic links</strong></p>
+                </div-->
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 px-6 text-center text-xs text-slate-400 mt-auto">
+        <p>&copy; 2026 K-W Urgent Care Clinics | Internal Network Access Control Matrix Active</p>
+    </footer>
+
+    <!-- Filter Logic Script -->
+    <script>
+        let currentActiveRole = null;
+
+        const permissions = {
+            admin: ['sec-frontdesk', 'sec-clinical', 'sec-operations', 'sec-admin'],
+            frontdesk: ['sec-frontdesk', 'sec-operations'],
+            nurse: ['sec-clinical', 'sec-operations'],
+            physician: ['sec-clinical', 'sec-operations']
+        };
+
+        const roleNames = {
+            admin: 'President / Admin',
+            frontdesk: 'Front Desk / Reception',
+            nurse: 'Nursing Staff',
+            physician: 'Physicians'
+        };
+
+        function handleRoleClick(clickedRole) {
+            if (currentActiveRole === clickedRole) {
+                resetFilter();
+            } else {
+                applyFilter(clickedRole);
+            }
+        }
+
+        function applyFilter(role) {
+            currentActiveRole = role;
+            const allowedSections = permissions[role];
+            const sections = document.querySelectorAll('.role-section');
+
+            sections.forEach(section => {
+                section.style.display = allowedSections.includes(section.id) ? 'block' : 'none';
+            });
+
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('bg-[#0B2545]', 'text-white', 'font-extrabold', 'shadow-md', 'ring-4', 'ring-[#0B2545]/10', 'scale-[1.02]');
+                btn.classList.add('bg-slate-50', 'text-slate-700', 'font-bold');
+                const icon = btn.querySelector('i');
+                if (icon) icon.classList.add('hidden');
+            });
+
+            const activeBtn = document.getElementById(`nav-${role}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-50', 'text-slate-700', 'font-bold');
+                activeBtn.classList.add('bg-[#0B2545]', 'text-white', 'font-extrabold', 'shadow-md', 'ring-4', 'ring-[#0B2545]/10', 'scale-[1.02]');
+                const icon = activeBtn.querySelector('i');
+                if (icon) icon.classList.remove('hidden');
+            }
+
+            const nurseCard = document.getElementById('link-nurse-workflow');
+            const physicianCard = document.getElementById('link-physician-res');
+            if (nurseCard) nurseCard.style.display = (role === 'physician') ? 'none' : 'flex';
+            if (physicianCard) physicianCard.style.display = (role === 'nurse') ? 'none' : 'flex';
+
+            const helpBox = document.getElementById('help-box');
+            helpBox.className = "bg-amber-50 border border-amber-200 rounded-xl p-3 text-center";
+            helpBox.innerHTML = `<p class="text-[11px] text-amber-800 font-medium leading-normal">Filtering for: <strong>${roleNames[role]}</strong><br><span class="text-[10px] opacity-70 font-normal">(Click selected role to unselect)</span></p>`;
+            
+            lucide.createIcons();
+        }
+
+        function resetFilter() {
+            currentActiveRole = null;
+            
+            document.querySelectorAll('.role-section').forEach(section => {
+                section.style.display = 'block';
+            });
+
+            const nurseCard = document.getElementById('link-nurse-workflow');
+            const physicianCard = document.getElementById('link-physician-res');
+            if (nurseCard) nurseCard.style.display = 'flex';
+            if (physicianCard) physicianCard.style.display = 'flex';
+
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('bg-[#0B2545]', 'text-white', 'font-extrabold', 'shadow-md', 'ring-4', 'ring-[#0B2545]/10', 'scale-[1.02]');
+                btn.classList.add('bg-slate-50', 'text-slate-700', 'font-bold');
+                const icon = btn.querySelector('i');
+                if (icon) icon.classList.add('hidden');
+            });
+
+            const helpBox = document.getElementById('help-box');
+            helpBox.className = "bg-blue-50 border border-blue-200 rounded-xl p-3 text-center";
+            helpBox.innerHTML = `<p class="text-[11px] text-blue-800 font-medium leading-normal">Showing <strong>all clinic links</strong></p>`;
+            
+            lucide.createIcons();
+        }
+
+        // Sidebar Toggles
+        const leftSidebar = document.getElementById('left-sidebar');
+        const rightSidebar = document.getElementById('right-sidebar');
+        const toggleLeft = document.getElementById('toggle-left');
+        const toggleRight = document.getElementById('toggle-right');
+
+        toggleRight.addEventListener('click', () => {
+            // Fixes responsive desktop behavior vs mobile layout breaking rules
+            if (rightSidebar.classList.contains('lg:block')) {
+                rightSidebar.classList.remove('lg:block');
+                rightSidebar.classList.add('hidden');
+            } else {
+                rightSidebar.classList.toggle('hidden');
+            }
+        });
+
+        toggleLeft.addEventListener('click', () => {
+            if (leftSidebar.classList.contains('lg:block')) {
+                leftSidebar.classList.remove('lg:block');
+                leftSidebar.classList.add('hidden');
+            } else {
+                leftSidebar.classList.toggle('hidden');
+            }
+        });
+
+        // Initialize
+        lucide.createIcons();
+    </script>
+</body>
+</html>
